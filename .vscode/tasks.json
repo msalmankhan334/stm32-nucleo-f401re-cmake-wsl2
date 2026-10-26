@@ -1,0 +1,43 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Configure (Debug)",
+            "type": "shell",
+            "command": "cmake --preset Debug",
+            "problemMatcher": []
+        },
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "cmake --preset Debug && cmake --build --preset Debug",
+            "group": { "kind": "build", "isDefault": true },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "Clean",
+            "type": "shell",
+            "command": "cmake --build --preset Debug --target clean",
+            "problemMatcher": []
+        },
+        {
+            "label": "Rebuild",
+            "type": "shell",
+            "command": "rm -rf build && cmake --preset Debug && cmake --build --preset Debug",
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "Flash (OpenOCD)",
+            "type": "shell",
+            "command": "openocd -f board/st_nucleo_f4.cfg -c \"program build/Debug/stm324f4.elf verify reset exit\"",
+            "dependsOn": "Build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Size",
+            "type": "shell",
+            "command": "arm-none-eabi-size build/Debug/stm324f4.elf",
+            "problemMatcher": []
+        }
+    ]
+}

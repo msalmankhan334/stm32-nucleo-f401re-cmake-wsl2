@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Nucleo-F401RE (OpenOCD)",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "openocd",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/build/Debug/stm324f4.elf",
+            "configFiles": ["board/st_nucleo_f4.cfg"],
+            "gdbPath": "gdb-multiarch",
+            "device": "STM32F401RE",
+            "runToEntryPoint": "main",
+            "preLaunchTask": "Build",
+            "showDevDebugOutput": "none"
+        },
+        {
+            "name": "Attach Nucleo-F401RE (OpenOCD)",
+            "type": "cortex-debug",
+            "request": "attach",
+            "servertype": "openocd",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/build/Debug/stm324f4.elf",
+            "configFiles": ["board/st_nucleo_f4.cfg"],
+            "gdbPath": "gdb-multiarch",
+            "device": "STM32F401RE"
+        }
+    ]
+}
